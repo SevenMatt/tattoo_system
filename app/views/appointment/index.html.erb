@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="fw-bold">Agendamentos</h1>
+    <%= link_to "Novo Agendamento", new_appointment_path, class: "btn btn-danger" %>
+</div>
+
+<div class="row">
+    <% @appointments.each do |a| %>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold"><%= a.title %></h5>
+
+                    <p class="card-text text-muted mb-1">
+                        <%= a.User.name %>
+                    </p>
+
+                    <p class="card-text">
+                        <%= a.start_time.strftime("%d%m %H:%M") %> -
+                        <%= a.end_time.strftime("%H:%M") %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

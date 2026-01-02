@@ -1,0 +1,10 @@
+/*
+    *= require bootstrap
+    *= require_sef
+ */
+
+
+.btn-danger {
+    background-color: #b11226;
+    border-color: #b11226;
+}
