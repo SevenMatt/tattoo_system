@@ -1,29 +1,26 @@
 class AppointmentController < ApplicationController
-    def index
-        @appointments = Appointments.includes(:user)
+   def index
+        @appointments = current_user.appointments
+   end
+
+   def new
+    @appointment = Appointment.new
+   end
+
+   def create
+    @appointment = current_user.appointments.build(new_appointment_params)
+
+    if @appointment.save
+        redirect_to appointments_path, notice: "Agendamento criado com Sucesso!"
+    else
+        render :new
     end
-
-    def new 
-        @appointment = Appointment.new
-        @users = User.all
-    end
-
-    def create
-        @appointment = Appointment.new(appointment_params)
-        @users = Users.all
-
-        if @appointment.save
-            redirect_,to appointment_path
-        else
-            render :new
-        end
 end
 
+private 
 
-private
-
-    def appointment_params
+    def appointments_params
         params.require(:appointment)
-              .permit(:title, :start_time, :end_time, :user_id)
+            .permit(:title, :start_time, :end_time)
     end
 end

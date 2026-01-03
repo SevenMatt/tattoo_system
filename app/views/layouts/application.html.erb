@@ -12,23 +12,23 @@
   </head>
 
   <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbat-dark bg-dark shadoow">
-      <div class="container">
-        <a class="navbar-brand fw-bold" href="/">Agendamento</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+      <div clcass="container">
+       <%= link_to "Scheduler", root_path, class: "navbar-brand fw-boold" %>
 
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <%= link_to "Agendamentos", appointment_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Novo", new_appointment_path, class: "btn btn-danger ms-2" %>
-            </li>
-          </ul>
-        </div>
+       <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item text-white mw-3">
+            <%= current_user.name %>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Sair", destroy_user_session_path,
+                method :delete,
+                class: "btn btn-outline-light btn-sm" %>
+          </li>
+        </ul>
       </div>
     </nav>
-  
+          
     <main  class="container mt-5">
       <%= yeld %>
     </main>

@@ -1,12 +1,12 @@
-require 'rails-helper'
+require 'rails_helper'
 
 Rspec.describe Appointment, type: :system do
     before do
-        driven_by(:track_test)
+        driven_by(:rack_test)
     end
 
     it "creates an appointment via UI" do
-        user = User.create(name: "Matheus", email: "ui@teste.com")
+        user = User.create!(name: "Matheus", email: "ui@teste.com")
 
         visit new_appointment_path
 
@@ -19,5 +19,4 @@ Rspec.describe Appointment, type: :system do
 
         expect(page).to have_content("Tattoo")
     end
-end
 end
